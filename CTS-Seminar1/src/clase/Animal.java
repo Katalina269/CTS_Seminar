@@ -1,6 +1,6 @@
 package clase;
 
-public abstract class Animal {
+public abstract class Animal implements Merge {
 	
 	private String nume;
 
