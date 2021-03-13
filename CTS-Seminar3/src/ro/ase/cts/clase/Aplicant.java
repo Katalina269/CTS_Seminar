@@ -1,5 +1,7 @@
 package ro.ase.cts.clase;
 
+import java.util.Arrays;
+
 public abstract class Aplicant{
 	protected String nume;
 	protected String prenume;
@@ -83,5 +85,30 @@ public abstract class Aplicant{
 		
 		return stringBuilder.toString();
 	}
+	public void afiseazaStatusPeProiect(Proiect proiect) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Aplicantul").append(this.nume).append(this.prenume);
+		stringBuilder.append(punctaj>proiect.getPragAcceptare() ? " a fost acceptat " : "nu a fost acceptat");
+		System.out.println(stringBuilder.toString());
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Aplicant [nume=");
+		builder.append(nume);
+		builder.append(", prenume=");
+		builder.append(prenume);
+		builder.append(", varsta=");
+		builder.append(varsta);
+		builder.append(", punctaj=");
+		builder.append(punctaj);
+		builder.append(", nr_proiecte=");
+		builder.append(nr_proiecte);
+		builder.append(", denumireProiect=");
+		builder.append(Arrays.toString(denumireProiect));
+		builder.append("]");
+		return builder.toString();
+	}
+	
 
 }
