@@ -8,6 +8,9 @@ import org.junit.Test;
 import ro.ase.cts.clase.Student;
 
 public class StudentTest {
+	
+	// am putea crea un setup care sa initializeze un obiect de tip Student
+	// ca sa nu mai facem asta in fiecare metoda
 
 	@Test
 	public void testConstructorCuParametru() {
@@ -79,6 +82,66 @@ public class StudentTest {
 		student.adaugaNota(7);
 		assertEquals(true,student.areRestante());
 	}
+	
+	//test pentru setter
+	
+	@Test
+	public void testSetNume() {
+		Student student = new Student();
+		String nume = "Florin";
+		student.setNume(nume);
+		assertEquals(nume, student.getNume());
+	}
+	// specifica pentru JUnit3
+	   @Test
+       public void testGetNotaIndexInvalid() {
+    	   Student student = new Student();
+    	   student.adaugaNota(10);
+    	   try {
+    		   //2
+    		   int nota = student.getNota(-1);
+    		   //3- nu este executata
+    		   fail("Nu trebuia sa ajunga aici. Metoda nu arunca exceptie");
+    	   }
+    	   catch(IndexOutOfBoundsException exception) {
+    		   //4
+    		   
+    	   }
+    	   catch(Exception exception) {
+    		  //5  nici aceasta linie nu este executata
+    		   fail("Tipul exceptiei aruncate nu este corect, adica nu e IndexOutOfBounds");
+    	   }
+          //6
+       }
+       
+       @Test(expected = IndexOutOfBoundsException.class)
+       public void testGetNotaIndexInvalidJUnit4() {
+    	   Student student = new Student();
+    	   student.adaugaNota(10);
+    	   
+    	   int nota = student.getNota(-1);
+       }
+       
+       @Test
+       public void testGetNotJUnit5() {
+    	   Student student = new Student();
+    	   student.adaugaNota(10);
+    	   assertThrows(IndexOutOfBoundsException.class,()->{
+    		   student.getNota(-1);
+    	   });
+       }
+       
+       @Test
+       public void testAdaugaNotaNegativa() {
+    	   Student student = new Student();
+    	   student.adaugaNota(10);
+    	   
+    	   if(student.getNota(0) >10 && student.getNota(0) <0) {
+    		   assertThrows(IllegalArgumentException.class, ()->{
+    			   student.getNota(0);
+    		   });
+    	   }
+       }
 	
 	
 }

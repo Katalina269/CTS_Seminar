@@ -38,6 +38,8 @@ public class Student {
             return note.get(index);
         }
         throw new IndexOutOfBoundsException();
+        // daca am comenta metoda de mai sus si am face return -1 -> ar intra pe metoda nu returneaza o exceptie - tot fail
+        // iar daca am alege un alt timp de exceptie, ar intra in celalalt catch
     }
 
     public float calculeazaMedie(){
