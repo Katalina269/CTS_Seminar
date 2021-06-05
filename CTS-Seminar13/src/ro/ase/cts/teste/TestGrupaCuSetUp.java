@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import ro.ase.cts.categoriiTeste.TesteGetPromovabilitate;
 import ro.ase.cts.clase.Grupa;
 import ro.ase.cts.clase.Student;
 
@@ -40,7 +42,7 @@ Grupa grupa;
 			grupa.adaugaStudent(student);
 		}
 	}
-	
+	@Category(TesteGetPromovabilitate.class)
 	@Test(timeout=500)
 	public void testPromovabilitatePerformance() {
 		grupa.getPromovabilitate();
